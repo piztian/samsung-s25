@@ -1,83 +1,144 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cuenta regresiva – Galaxy S25</title>
+  <title>Galaxy S25 Edge – Lanzamiento Oficial</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(#428ec4, #74add8);
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+      color: white;
+      text-align: center;
+    }
+    header {
+      background-color: #000;
+      padding: 20px;
+    }
+    header img {
+      max-width: 180px;
+    }
+    .hero {
+      background: url('https://res.m21.email.samsung.com/res/img/DE81AFF966996D38096481D23E265FB2.jpg') center/cover no-repeat;
+      height: 50vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
       color: white;
-    }
-    h1 {
-      margin-bottom: 30px;
+      font-size: 2rem;
+      text-shadow: 0 0 10px #000;
     }
     .countdown {
       display: flex;
-      gap: 10px;
+      justify-content: center;
+      gap: 15px;
+      margin: 40px 0;
+      flex-wrap: wrap;
     }
     .box {
-      background: rgba(255,255,255,0.1);
-      border: 2px solid white;
-      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid #00aaff;
+      border-radius: 12px;
       padding: 20px 30px;
-      text-align: center;
+      width: 100px;
     }
     .time {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: bold;
     }
     .label {
-      font-size: 1rem;
       margin-top: 5px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .button {
+      background: #00aaff;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      color: white;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: background 0.3s;
+    }
+    .button:hover {
+      background: #0077aa;
+    }
+    .section {
+      padding: 40px 20px;
+    }
+    .gallery img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    footer {
+      padding: 20px;
+      font-size: 0.8rem;
+      background-color: #0a0a0a;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-  <h1>Lanzamiento Galaxy S25</h1>
+
+<header>
+  <img src="https://res.m21.email.samsung.com/res/img/0B59B1B8477C14CBCD8B421A7A7BF14E.png" alt="Samsung">
+</header>
+
+<section class="hero">
+  <div>Galaxy S25 Edge<br/>Preventa Oficial</div>
+</section>
+
+<div class="section">
+  <h2>Cuenta regresiva para el lanzamiento</h2>
   <div class="countdown" id="countdown">
     <div class="box"><div class="time" id="days">--</div><div class="label">DÍAS</div></div>
     <div class="box"><div class="time" id="hours">--</div><div class="label">HORAS</div></div>
     <div class="box"><div class="time" id="minutes">--</div><div class="label">MINUTOS</div></div>
     <div class="box"><div class="time" id="seconds">--</div><div class="label">SEGUNDOS</div></div>
   </div>
+  <button class="button" onclick="alert('Redirigir a tienda...')">Compra ahora</button>
+</div>
 
-  <script>
-    const targetDate = new Date("2025-05-30T11:59:00-06:00").getTime();
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
+<div class="section gallery">
+  <img src="https://res.m21.email.samsung.com/res/img/981A4BE7F2F6036455B20E803231D409.jpg" alt="Galaxy S25 Promo 1">
+  <img src="https://res.m21.email.samsung.com/res/img/A1A1BA7150411D4FF3DCD1FBFC4BAD76.jpg" alt="Galaxy S25 Promo 2">
+  <img src="https://res.m21.email.samsung.com/res/img/FB43AF6CF9420852E460332A4955A0F1.jpg" alt="Galaxy S25 Promo 3">
+</div>
 
-      if (distance <= 0) {
-        document.getElementById("days").textContent = "--";
-        document.getElementById("hours").textContent = "--";
-        document.getElementById("minutes").textContent = "--";
-        document.getElementById("seconds").textContent = "--";
-        return;
-      }
+<footer>
+  © 2025 Samsung Electronics Co., Ltd. Todos los derechos reservados.
+</footer>
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((distance / (1000 * 60)) % 60);
-      const seconds = Math.floor((distance / 1000) % 60);
+<script>
+  const targetDate = new Date("2025-05-30T11:59:00-06:00").getTime();
+  const updateCountdown = () => {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
 
-      document.getElementById("days").textContent = String(days).padStart(2, '0');
-      document.getElementById("hours").textContent = String(hours).padStart(2, '0');
-      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
-      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
-    };
+    if (distance <= 0) {
+      document.querySelectorAll('.time').forEach(el => el.textContent = '--');
+      return;
+    }
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
+
+    document.getElementById("days").textContent = String(days).padStart(2, '0');
+    document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+  };
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
 </body>
 </html>
