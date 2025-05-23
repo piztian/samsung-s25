@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cuenta regresiva – Galaxy S25</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#428ec4, #74add8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    .countdown {
+      display: flex;
+      gap: 10px;
+    }
+    .box {
+      background: rgba(255,255,255,0.1);
+      border: 2px solid white;
+      border-radius: 10px;
+      padding: 20px 30px;
+      text-align: center;
+    }
+    .time {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .label {
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lanzamiento Galaxy S25</h1>
+  <div class="countdown" id="countdown">
+    <div class="box"><div class="time" id="days">--</div><div class="label">DÍAS</div></div>
+    <div class="box"><div class="time" id="hours">--</div><div class="label">HORAS</div></div>
+    <div class="box"><div class="time" id="minutes">--</div><div class="label">MINUTOS</div></div>
+    <div class="box"><div class="time" id="seconds">--</div><div class="label">SEGUNDOS</div></div>
+  </div>
+
+  <script>
+    const targetDate = new Date("2025-05-30T11:59:00-06:00").getTime();
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("days").textContent = "--";
+        document.getElementById("hours").textContent = "--";
+        document.getElementById("minutes").textContent = "--";
+        document.getElementById("seconds").textContent = "--";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      document.getElementById("days").textContent = String(days).padStart(2, '0');
+      document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+    };
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
