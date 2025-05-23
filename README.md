@@ -1,7 +1,3 @@
-Claro, aquí tienes un ejemplo profesional y visualmente atractivo para tu archivo `README.md` del repositorio `samsung-s25` en GitHub:
-
----
-
 ### 📱 Galaxy S25 Edge – Preventa Oficial
 
 ¡Bienvenido al sitio promocional del **Galaxy S25 Edge** con estilo Samsung y contador dinámico para el **lanzamiento oficial**!
